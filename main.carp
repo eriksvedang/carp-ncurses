@@ -1,0 +1,14 @@
+(load "ncurses.carp")
+(use NCurses)
+
+(defn main []
+  (do (initscr)
+      (let-do [w (width)
+               h (height)
+               s (str* "Hello! " w ", " h)]
+        (move (/ h 2) (- (/ w 2)
+                         (/ (count &s) 2)))
+        (printw s))
+      (refresh)
+      (getch)
+      (endwin)))
