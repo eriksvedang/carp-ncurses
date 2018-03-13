@@ -1,5 +1,5 @@
 (system-include "ncurses.h")
-(local-include "/Users/erik/Projects/carp-ncurses/ncurses_helper.h")
+(relative-include "ncurses_helper.h")
 (add-lib "-lncurses")
 
 (defmodule NCurses
