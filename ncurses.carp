@@ -2,9 +2,11 @@
 (relative-include "ncurses_helper.h")
 (add-lib "-lncurses")
 
+(register-type WINDOW)
+
 (defmodule NCurses
   (register initscr (Fn [] ()) "initscr")
-  (register printw (Fn [String] ()) "printw")
+  (register printw (Fn [String] ()) "printw") ;; memory leak, switch to (Ptr Char)
   (register refresh (Fn [] ()) "refresh")
   (register getch (Fn [] ()) "getch")
   (register endwin (Fn [] ()) "endwin")
@@ -28,4 +30,12 @@
   (register COLOR_MAGENTA Int "COLOR_MAGENTA")
   (register COLOR_CYAN Int "COLOR_CYAN")
   (register COLOR_WHITE Int "COLOR_WHITE")
+
+  ;; Windows
+  (register wbkgd (Fn [(Ptr WINDOW) Int] ()) "wbkgd")
+  (register newwin (Fn [Int Int Int Int] (Ptr WINDOW)) "newwin")
+  (register wattron (Fn [(Ptr WINDOW) Int] ()) "wattron")
+  (register wrefresh (Fn [(Ptr WINDOW)] ()) "wrefresh")
+  (register box (Fn [(Ptr WINDOW) Int Int] ()) "box")
+  (register mvwprintw (Fn [(Ptr WINDOW) Int Int String] ()) "mvwprintw") ;; Leak!
   )

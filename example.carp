@@ -8,6 +8,15 @@
       (init-pair 2 COLOR_BLUE COLOR_BLACK)
       (init-pair 3 COLOR_GREEN COLOR_WHITE)
       (attron (color-pair 1))
+      (refresh)
+      (let [win (newwin 10 20 5 5)]
+        (do
+          ;;(wattron win (color-pair 3))
+          (wbkgd win (color-pair 2))
+          (printw @"YEAH")
+          (mvwprintw win 0 0 @"Hej")
+          (box win 0 0)
+          (wrefresh win)))
       (let-do [w (width)
                h (height)
                s (str* "Hello! " w ", " h)]
