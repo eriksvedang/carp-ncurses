@@ -3,6 +3,9 @@
 
 (defn main []
   (do (initscr)
+      (start-color)
+      (init-pair 1 COLOR_BLACK COLOR_RED)
+      (attron (color-pair 1))
       (let-do [w (width)
                h (height)
                s (str* "Hello! " w ", " h)]

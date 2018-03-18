@@ -13,4 +13,12 @@
   ;; From ncurses_helper.h
   (register width (Fn [] Int))
   (register height (Fn [] Int))
+
+  ;; Colors
+  (register start-color (Fn [] ()) "start_color")
+  (register init-pair (Fn [Int Int Int] ()) "init_pair")
+  (register attron (Fn [Int] ()) "attron")
+  (register color-pair (Fn [Int] Int) "COLOR_PAIR")
+  (register COLOR_BLACK Int "COLOR_BLACK")
+  (register COLOR_RED Int "COLOR_RED")
   )
