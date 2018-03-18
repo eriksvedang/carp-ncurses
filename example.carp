@@ -1,6 +1,8 @@
 (load "ncurses.carp")
 (use NCurses)
 
+(def x 10)
+
 (defn main []
   (do (initscr)
       (start-color)
@@ -17,12 +19,18 @@
           (mvwprintw win 0 0 @"Hej")
           (box win 0 0)
           (wrefresh win)))
-      (let-do [w (width)
-               h (height)
-               s (str* "Hello! " w ", " h)]
-        (move (/ h 2) (- (/ w 2)
-                         (/ (count &s) 2)))
-        (printw s))
-      (refresh)
-      (getch)
+      (while true
+        (do
+          (let-do [w (width)
+                   h (height)
+                   s (str* "Hello! " w ", " h)]
+            (move (/ h 2) (- (/ w 2)
+                             (/ (count &s) 2)))
+            (printw s)
+            (move 30 x)
+            (printw @"@")
+            )
+          (refresh)
+          (getch)
+          (update! x inc)))
       (endwin)))
