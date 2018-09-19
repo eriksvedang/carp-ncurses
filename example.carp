@@ -25,7 +25,7 @@
                    h (height)
                    s (str* "Hello! " w ", " h)]
             (move (/ h 2) (- (/ w 2)
-                             (/ (count &s) 2)))
+                             (/ (length &s) 2)))
             (printw s)
             (move 30 x)
             (printw @"@")
