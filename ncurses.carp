@@ -4,6 +4,7 @@
 
 (register-type WINDOW)
 (register-type SCREEN)
+(register-type chtype)
 
 (defmodule NCurses
   (register ERR Int "ERR")
@@ -21,6 +22,15 @@
   (register refresh (Fn [] ()) "refresh")
   (register getch (Fn [] ()) "getch")
   (register move (Fn [Int Int] ()) "move")
+
+  ;; Add character functions (see curs_addch)
+  ;; Each of these functions returns an Int indicating success or failure.
+  (register addch (Fn [chtype] Int) "addch")
+  (register waddch (Fn [(Ptr WINDOW) chtype] Int) "waddch")
+  (register mvaddch (Fn [Int Int chtype] Int) "mvaddch")
+  (register mvwaddch (Fn [(Ptr WINDOW) Int Int chtype] Int) "mvwaddch")
+  (register echochar (Fn [chtype] Int) "echochar")
+  (register wechochar (Fn [(Ptr WINDOW) chtype] Int) "wechochar")
 
   ;; Add string functions (see curs_addstr)
   ;; Each of these functions returns an Int indicating success or failure.
