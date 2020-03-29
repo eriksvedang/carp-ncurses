@@ -6,7 +6,7 @@
 (register-type SCREEN)
 
 (defmodule NCurses
-  ;; Initialization functions
+  ;; Initialization functions (see curs_initscr)
   (register initscr (Fn [] (Ptr WINDOW)) "initscr")
   (register isendwin (Fn [] Bool) "isendwin")
   (register newterm (Fn [String (Ptr FILE) (Ptr FILE)] (Ptr SCREEN)) "newterm")
@@ -18,6 +18,18 @@
   (register refresh (Fn [] ()) "refresh")
   (register getch (Fn [] ()) "getch")
   (register move (Fn [Int Int] ()) "move")
+
+  ;; Add string functions (see curs_addstr)
+  ;; Each of these functions returns an Int indicating success or failure.
+  (register addstr (Fn [String] Int) "addstr")
+  (register addnstr (Fn [String Int] Int) "addnstr")
+  (register waddstr (Fn [(Ptr WINDOW) String] Int) "waddstr")
+  (register waddnstr (Fn [(Ptr WINDOW) String Int] Int) "waddnstr")
+  (register mvaddstr (Fn [Int Int String] Int) "mvaddstr")
+  (register mvaddnstr (Fn [Int Int String Int] Int) "mvaddnstr")
+  (register mvwaddstr (Fn [(Ptr WINDOW) Int Int String] Int) "mvwaddstr")
+  (register mvwaddnstr (Fn [(Ptr WINDOW) Int Int String Int] Int)
+  "mvwaddnstr")
 
   ;; From ncurses_helper.h
   (register width (Fn [] Int))
