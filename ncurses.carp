@@ -6,6 +6,9 @@
 (register-type SCREEN)
 
 (defmodule NCurses
+  (register ERR Int "ERR")
+  (register OK Int "OK")
+
   ;; Initialization functions (see curs_initscr)
   (register initscr (Fn [] (Ptr WINDOW)) "initscr")
   (register isendwin (Fn [] Bool) "isendwin")
