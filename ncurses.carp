@@ -3,13 +3,20 @@
 (add-lib "-lncurses")
 
 (register-type WINDOW)
+(register-type SCREEN)
 
 (defmodule NCurses
-  (register initscr (Fn [] ()) "initscr")
+  ;; Initialization functions
+  (register initscr (Fn [] (Ptr WINDOW)) "initscr")
+  (register isendwin (Fn [] Bool) "isendwin")
+  (register newterm (Fn [String (Ptr FILE) (Ptr FILE)] (Ptr SCREEN)) "newterm")
+  (register set-term (Fn [(Ptr SCREEN)] (Ptr SCREEN)) "set_term")
+  (register delscreen (Fn [(Ptr SCREEN)] ()) "delscreen")
+  (register endwin (Fn [] Int) "endwin")
+
   (register printw (Fn [String] ()) "printw") ;; memory leak, switch to (Ptr Char)
   (register refresh (Fn [] ()) "refresh")
   (register getch (Fn [] ()) "getch")
-  (register endwin (Fn [] ()) "endwin")
   (register move (Fn [Int Int] ()) "move")
 
   ;; From ncurses_helper.h
