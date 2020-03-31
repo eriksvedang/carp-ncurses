@@ -64,11 +64,36 @@
   (register width (Fn [] Int))
   (register height (Fn [] Int))
 
-  ;; Colors
-  (register start-color (Fn [] ()) "start_color")
-  (register init-pair (Fn [Int Int Int] ()) "init_pair")
-  (register attron (Fn [Int] ()) "attron")
+  ;; Color functions (see curs_color)
+  ;; COLORS is initialized to the maximum number of colors the terminal can
+  ;; support after a call to start-color
+  (register COLORS Int "COLORS")
+  ;; COLOR_PAIRS is initialized to the maximum number of color pairs the
+  ;; terminal can support after a call to start-color
+  (register COLOR_PAIRS Int "COLOR_PAIRS")
+  (register start-color (Fn [] Int) "start_color")
+  (register has-colors (Fn [] Bool) "has_colors")
+  (register can-change-color (Fn [] Bool) "can_change_color")
+  ;; TODO: init_pair takes shorts, make sure Int is ok.
+  (register init-pair (Fn [Int Int Int] Int) "init_pair")
+  ;; TODO: init_color takes shorts, make sure Int is ok.
+  (register init-color (Fn [Int Int Int Int] Int) "init_color")
+  ;; extensions -- note that these actually accept ints instead of shorts
+  (register init-extended-pair (Fn [Int Int Int] int) "init_extended_pair")
+  (register init-extended-color (Fn [Int Int Int Int] int) "init_extended_color")
+  ;; TODO: color_content takes shorts, make sure Int is ok.
+  (register color-content (Fn [Int Int Int Int] Int) "color_content")
+  ;; TODO: pair_content takes shorts, make sure Int is ok.
+  (register pair-content (Fn [Int Int Int] Int) "pair_content")
+  ;; extensions -- note that these actually accept ints instead of shorts
+  (register extended-color-content (Fn [Int Int Int Int] Int)
+  "extended_color_content")
+  (register extended-pair-content (Fn [Int Int Int] Int) "extended_pair_content")
+  ;; extension
+  (register reset-color-pairs (Fn [] ()) "reset_color_pairs")
   (register color-pair (Fn [Int] Int) "COLOR_PAIR")
+  (register pair-number (Fn [Int] Int) "PAIR_NUMBER")
+  (register attron (Fn [Int] ()) "attron")
   (register COLOR_BLACK Int "COLOR_BLACK")
   (register COLOR_RED Int "COLOR_RED")
   (register COLOR_RED Int "COLOR_RED")
