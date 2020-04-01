@@ -5,6 +5,8 @@
 (register-type WINDOW)
 (register-type SCREEN)
 (register-type chtype)
+;; Just a synonym for chtype under the hood.
+(register-type Attribute)
 
 (defmodule NCurses
   (register ERR Int "ERR")
@@ -103,6 +105,45 @@
   (register COLOR_MAGENTA Int "COLOR_MAGENTA")
   (register COLOR_CYAN Int "COLOR_CYAN")
   (register COLOR_WHITE Int "COLOR_WHITE")
+
+  ;; Attr functions
+  ;; N.B. Many of the curs_attr functions take a void pointer as their final
+  ;; argument. The man pages I have, circa ncurses 6.1, state that only
+  ;; "functions that modify the color" and "functions that retrieve the color"
+  ;; use this final argument, and when used, expect an int pointer.
+  ;;
+  ;; All other functions don't make use of the argument at all, "except to check
+  ;; that it is null"
+  ;;
+  ;; So, as a result, the signatures of bindings for functions that take the
+  ;; final void pointer as an argument take a `(Ptr Int)` since we can pass NULL
+  ;; for the functions that don't use the argument, and an Int Pointer for those
+  ;; that do.
+  (register attr-ptr (Fn [] (Ptr Attribute)) "NCurses_attr_ptr")
+  (register attr-get (Fn [(Ptr Attribute) (Ptr Int) (Ptr Int)] Int) "attr_get")
+  (register wattr-get (Fn [(Ptr WINDOW) (Ptr attr_t) (Ptr Int) (Ptr Int)] Int) "wattr_get")
+  (register attr-set (Fn [(Ptr Attribute) Int (Ptr Int)] Int) "attr_set")
+  (register wattr-set (Fn [(Ptr WINDOW) (Ptr Attribute) Int (Ptr Int)] Int) "wattr_set")
+  (register attr-off (Fn [Attribute (Ptr Int)] Int) "attr_off")
+  (register wattr-off (Fn [(Ptr WINDOW) Attribute (Ptr Int)] Int) "wattr_off")
+  (register attr-on (Fn [Attribute (Ptr Int)] Int) "attr_on")
+  (register wattr-on (Fn [(Ptr WINDOW) Attribute (Ptr Int)] Int) "wattr_on")
+  (register attroff (Fn [Int] Int) "attroff")
+  (register wattroff (Fn [(Ptr WINDOW) Int] Int) "wattroff")
+  (register attron (Fn [Int] Int) "attron")
+  (register wattron (Fn [(Ptr WINDOW) Int] Int) "wattron")
+  (register attrset (Fn [Int] Int) "attrset")
+  (register wattrset (Fn [(Ptr WINDOW) Int] Int) "wattrset")
+  (register chgat (Fn [Int Attribute Int (Ptr Int)] Int) "chgat")
+  (register wchgat (Fn [(Ptr WINDOW) Int Attribute Int (Ptr Int)] Int) "wchgat")
+  (register mvchgat (Fn [Int Int Int Attribute Int (Ptr Int)] Int) "mvchgat")
+  (register mvwchgat (Fn [(Ptr WINDOW) Int Int Int Attribute Int (Ptr Int)] Int) "mvwchgat")
+  (register color-set (Fn [Int (Ptr Int)] Int) "color_set")
+  (register wcolor-set (Fn [(Ptr WINDOW) Int (Ptr Int)] Int) "wcolor_set")
+  (register standend (Fn [] Int) "standend")
+  (register wstandend (Fn [(Ptr WINDOW)] Int) "wstandend")
+  (register standout (Fn [] Int) "standout")
+  (register wstandout (Fn [(Ptr WINDOW)] Int) "wstandout")
 
   ;; Windows
   (register wbkgd (Fn [(Ptr WINDOW) Int] ()) "wbkgd")
