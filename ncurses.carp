@@ -4,9 +4,10 @@
 
 (register-type WINDOW)
 (register-type SCREEN)
-(register-type chtype)
+(register-type Chtype)
 ;; Just a synonym for chtype under the hood.
 (register-type Attribute)
+(register-type Short)
 
 (defmodule NCurses
   (register ERR Int "ERR")
@@ -27,12 +28,12 @@
 
   ;; Add character functions (see curs_addch)
   ;; Each of these functions returns an Int indicating success or failure.
-  (register addch (Fn [chtype] Int) "addch")
-  (register waddch (Fn [(Ptr WINDOW) chtype] Int) "waddch")
-  (register mvaddch (Fn [Int Int chtype] Int) "mvaddch")
-  (register mvwaddch (Fn [(Ptr WINDOW) Int Int chtype] Int) "mvwaddch")
-  (register echochar (Fn [chtype] Int) "echochar")
-  (register wechochar (Fn [(Ptr WINDOW) chtype] Int) "wechochar")
+  (register addch (Fn [Chtype] Int) "addch")
+  (register waddch (Fn [(Ptr WINDOW) Chtype] Int) "waddch")
+  (register mvaddch (Fn [Int Int Chtype] Int) "mvaddch")
+  (register mvwaddch (Fn [(Ptr WINDOW) Int Int Chtype] Int) "mvwaddch")
+  (register echochar (Fn [Chtype] Int) "echochar")
+  (register wechochar (Fn [(Ptr WINDOW) Chtype] Int) "wechochar")
 
   ;; Add string functions (see curs_addstr)
   ;; Each of these functions returns an Int indicating success or failure.
@@ -76,17 +77,13 @@
   (register start-color (Fn [] Int) "start_color")
   (register has-colors (Fn [] Bool) "has_colors")
   (register can-change-color (Fn [] Bool) "can_change_color")
-  ;; TODO: init_pair takes shorts, make sure Int is ok.
-  (register init-pair (Fn [Int Int Int] Int) "init_pair")
-  ;; TODO: init_color takes shorts, make sure Int is ok.
-  (register init-color (Fn [Int Int Int Int] Int) "init_color")
+  (register init-pair (Fn [Short Short Short] Int) "init_pair")
+  (register init-color (Fn [Short Short Short Short] Int) "init_color")
   ;; extensions -- note that these actually accept ints instead of shorts
   (register init-extended-pair (Fn [Int Int Int] int) "init_extended_pair")
   (register init-extended-color (Fn [Int Int Int Int] int) "init_extended_color")
-  ;; TODO: color_content takes shorts, make sure Int is ok.
-  (register color-content (Fn [Int Int Int Int] Int) "color_content")
-  ;; TODO: pair_content takes shorts, make sure Int is ok.
-  (register pair-content (Fn [Int Int Int] Int) "pair_content")
+  (register color-content (Fn [Short Short Short Short] Int) "color_content")
+  (register pair-content (Fn [Short Short Short] Int) "pair_content")
   ;; extensions -- note that these actually accept ints instead of shorts
   (register extended-color-content (Fn [Int Int Int Int] Int)
   "extended_color_content")
@@ -120,10 +117,10 @@
   ;; for the functions that don't use the argument, and an Int Pointer for those
   ;; that do.
   (register attr-ptr (Fn [] (Ptr Attribute)) "NCurses_attr_ptr")
-  (register attr-get (Fn [(Ptr Attribute) (Ptr Int) (Ptr Int)] Int) "attr_get")
-  (register wattr-get (Fn [(Ptr WINDOW) (Ptr attr_t) (Ptr Int) (Ptr Int)] Int) "wattr_get")
-  (register attr-set (Fn [(Ptr Attribute) Int (Ptr Int)] Int) "attr_set")
-  (register wattr-set (Fn [(Ptr WINDOW) (Ptr Attribute) Int (Ptr Int)] Int) "wattr_set")
+  (register attr-get (Fn [(Ptr Attribute) (Ptr Short) (Ptr Int)] Int) "attr_get")
+  (register wattr-get (Fn [(Ptr WINDOW) (Ptr Attribute) (Ptr Short) (Ptr Int)] Int) "wattr_get")
+  (register attr-set (Fn [(Ptr Attribute) Short (Ptr Int)] Int) "attr_set")
+  (register wattr-set (Fn [(Ptr WINDOW) (Ptr Attribute) Short (Ptr Int)] Int) "wattr_set")
   (register attr-off (Fn [Attribute (Ptr Int)] Int) "attr_off")
   (register wattr-off (Fn [(Ptr WINDOW) Attribute (Ptr Int)] Int) "wattr_off")
   (register attr-on (Fn [Attribute (Ptr Int)] Int) "attr_on")
@@ -134,12 +131,12 @@
   (register wattron (Fn [(Ptr WINDOW) Int] Int) "wattron")
   (register attrset (Fn [Int] Int) "attrset")
   (register wattrset (Fn [(Ptr WINDOW) Int] Int) "wattrset")
-  (register chgat (Fn [Int Attribute Int (Ptr Int)] Int) "chgat")
-  (register wchgat (Fn [(Ptr WINDOW) Int Attribute Int (Ptr Int)] Int) "wchgat")
-  (register mvchgat (Fn [Int Int Int Attribute Int (Ptr Int)] Int) "mvchgat")
-  (register mvwchgat (Fn [(Ptr WINDOW) Int Int Int Attribute Int (Ptr Int)] Int) "mvwchgat")
-  (register color-set (Fn [Int (Ptr Int)] Int) "color_set")
-  (register wcolor-set (Fn [(Ptr WINDOW) Int (Ptr Int)] Int) "wcolor_set")
+  (register chgat (Fn [Int Attribute Short (Ptr Int)] Int) "chgat")
+  (register wchgat (Fn [(Ptr WINDOW) Int Attribute Short (Ptr Int)] Int) "wchgat")
+  (register mvchgat (Fn [Int Int Int Attribute Short (Ptr Int)] Int) "mvchgat")
+  (register mvwchgat (Fn [(Ptr WINDOW) Int Int Int Attribute Short (Ptr Int)] Int) "mvwchgat")
+  (register color-set (Fn [Short (Ptr Int)] Int) "color_set")
+  (register wcolor-set (Fn [(Ptr WINDOW) Short (Ptr Int)] Int) "wcolor_set")
   (register standend (Fn [] Int) "standend")
   (register wstandend (Fn [(Ptr WINDOW)] Int) "wstandend")
   (register standout (Fn [] Int) "standout")

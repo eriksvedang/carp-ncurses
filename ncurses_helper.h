@@ -7,6 +7,11 @@
 // parameter instead of a concrete type, so, we need to pass it a type that
 // begins with a capital letter.
 typedef attr_t Attribute;
+// The comments above likewise apply to chtype and short, both of which are used
+// throughout ncurses; for convenience we define counterparts that play well
+// with Carp's compiler here.
+typedef chtype Chtype;
+typedef short Short;
 
 Attribute *NCurses_attr_ptr() {
   Attribute* attributes;
