@@ -3,14 +3,62 @@
 (add-lib "-lncurses")
 
 (register-type WINDOW)
+(register-type SCREEN)
+(register-type chtype)
 
 (defmodule NCurses
-  (register initscr (Fn [] ()) "initscr")
+  (register ERR Int "ERR")
+  (register OK Int "OK")
+  (register TRUE Int "TRUE")
+  (register FALSE Int "FALSE")
+
+  ;; Initialization functions (see curs_initscr)
+  (register initscr (Fn [] (Ptr WINDOW)) "initscr")
+  (register isendwin (Fn [] Bool) "isendwin")
+  (register newterm (Fn [String (Ptr FILE) (Ptr FILE)] (Ptr SCREEN)) "newterm")
+  (register set-term (Fn [(Ptr SCREEN)] (Ptr SCREEN)) "set_term")
+  (register delscreen (Fn [(Ptr SCREEN)] ()) "delscreen")
+  (register endwin (Fn [] Int) "endwin")
+
   (register printw (Fn [String] ()) "printw") ;; memory leak, switch to (Ptr Char)
-  (register refresh (Fn [] ()) "refresh")
-  (register getch (Fn [] ()) "getch")
-  (register endwin (Fn [] ()) "endwin")
   (register move (Fn [Int Int] ()) "move")
+
+  ;; Add character functions (see curs_addch)
+  ;; Each of these functions returns an Int indicating success or failure.
+  (register addch (Fn [chtype] Int) "addch")
+  (register waddch (Fn [(Ptr WINDOW) chtype] Int) "waddch")
+  (register mvaddch (Fn [Int Int chtype] Int) "mvaddch")
+  (register mvwaddch (Fn [(Ptr WINDOW) Int Int chtype] Int) "mvwaddch")
+  (register echochar (Fn [chtype] Int) "echochar")
+  (register wechochar (Fn [(Ptr WINDOW) chtype] Int) "wechochar")
+
+  ;; Add string functions (see curs_addstr)
+  ;; Each of these functions returns an Int indicating success or failure.
+  (register addstr (Fn [String] Int) "addstr")
+  (register addnstr (Fn [String Int] Int) "addnstr")
+  (register waddstr (Fn [(Ptr WINDOW) String] Int) "waddstr")
+  (register waddnstr (Fn [(Ptr WINDOW) String Int] Int) "waddnstr")
+  (register mvaddstr (Fn [Int Int String] Int) "mvaddstr")
+  (register mvaddnstr (Fn [Int Int String Int] Int) "mvaddnstr")
+  (register mvwaddstr (Fn [(Ptr WINDOW) Int Int String] Int) "mvwaddstr")
+  (register mvwaddnstr (Fn [(Ptr WINDOW) Int Int String Int] Int)
+  "mvwaddnstr")
+
+  ;; Get character functions
+  (register getch (Fn [] Int) "getch")
+  (register wgetch (Fn [(Ptr WINDOW)] Int) "wgetch")
+  (register mvgetch (Fn [Int Int] Int) "mvgetch")
+  (register mvwgetch (Fn [(Ptr WINDOW) Int Int] Int) "mvwgetch")
+  (register ungetch (Fn [Int] Int) "ungetch")
+  (register has-key (Fn [Int] Int) "has_key")
+
+  ;; Refresh functions
+  (register refresh (Fn [] Int) "refresh")
+  (register wrefresh (Fn [(Ptr WINDOW)] Int) "wrefresh")
+  (register wnoutrefresh (Fn [(Ptr WINDOW)] Int) "wnoutrefresh")
+  (register doupdate (Fn [] Int) "doupdate")
+  (register redrawwin (Fn [(Ptr WINDOW)] Int) "redrawwin")
+  (register wredrawln (Fn [(Ptr WINDOW) Int Int] Int) "wredrawln")
 
   ;; From ncurses_helper.h
   (register width (Fn [] Int))
