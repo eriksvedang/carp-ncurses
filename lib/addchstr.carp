@@ -1,0 +1,15 @@
+;; ncurses addchstr functions (see curs_addchstr)
+;; The primary difference between this suite of functions and the addstr
+;; functions is that they're faster, but don't perform a variety of convenient
+;; checks or side-effects, such as advancing the window cursor.
+(defmodule NCurses
+  (register addchstr (Fn [(Ptr Chtype)] Int) "addchstr")
+  (register addchnstr (Fn [(Ptr Chtype) Int] Int) "addchnstr")
+  (register waddchstr (Fn [(Ptr WINDOW) (Ptr Chtype)] Int) "waddchstr")
+  (register waddchnstr (Fn [(Ptr WINDOW) (Ptr Chtype) Int] Int) "waddchnstr")
+  (register mvaddchstr (Fn [Int Int (Ptr Chtype)] Int) "mvaddchstr")
+  (register mvaddchnstr (Fn [Int Int (Ptr Chtype) Int] Int) "mvaddchnstr")
+  (register mvwaddchstr (Fn [(Ptr WINDOW) Int Int (Ptr Chtype)] Int) "mvwaddchstr")
+  (register mvwaddchnstr (Fn [(Ptr WINDOW) Int Int (Ptr Chtype) Int] Int) "mvwaddchnstr")
+)
+
