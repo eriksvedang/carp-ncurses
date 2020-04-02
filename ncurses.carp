@@ -23,6 +23,7 @@
 (load "lib/newpair.carp")
 (load "lib/defaultcolors.carp")
 (load "lib/termattrs.carp")
+(load "lib/beep.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")

@@ -1,0 +1,5 @@
+;; ncurses beep functions (see curs_beep)
+(defmodule NCurses
+  (register beep (Fn [] Int) "beep")
+  (register flash (Fn [] Int) "flash")
+)
