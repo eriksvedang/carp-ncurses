@@ -12,6 +12,7 @@ typedef attr_t Attribute;
 // with Carp's compiler here.
 typedef chtype Chtype;
 typedef short Short;
+typedef cchar_t Cchar;
 
 Short NCurses_from_MINUS_int(int x) {
   return (short)x;
