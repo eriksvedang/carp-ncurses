@@ -8,6 +8,7 @@
 ;; Just a synonym for chtype under the hood.
 (register-type Attribute)
 (register-type Short)
+(register-type MEVENT)
 
 (load "lib/addch.carp")
 (load "lib/addstr.carp")

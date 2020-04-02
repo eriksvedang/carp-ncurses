@@ -1,0 +1,37 @@
+(defmodule NCurses
+  ;; TODO: Trace accepts a Trace Parameter (defined below)
+  ;; Define a wrapping type on the carp side and proj/inj functions in the
+  ;; helper.
+  (register trace (Fn [Int] ()) "trace")
+  ;; TODO: tracef is a vararg function.
+  (register tracef (Fn [(Ptr Char)] ()) "_tracef")
+  (register traceattr (Fn [Attribute] (Ptr Char)) "_traceattr")
+  (register traceattr2 (Fn [Int Chtype] (Ptr Char)) "_traceattr2")
+  (register tracecchar_t (Fn [(Ptr Cchar)] (Ptr Char)) "_tracecchar_t")
+  (register tracecchar_t2 (Fn [(Ptr Cchar)] (Ptr Char)) "_tracecchar_t2")
+  (register tracechar (Fn [Int] (Ptr Char)) "_tracechar")
+  (register tracechtype (Fn [Chtype] (Ptr Char)) "_tracechtype")
+  (register tracechtype2 (Fn [Int Chtype] (Ptr Char)) "_tracechtype2")
+
+  (register tracedump (Fn [(Ptr Char) (Ptr WINDOW)] ()) "_tracedump")
+  (register nc-tracebits (Fn [] (Ptr Char)) "_nc_tracebits")
+  (register tracemouse (Fn [(Ptr MEVENT)] (Ptr Char)) "_tracemouse")
+
+  ;; Trace Parameters
+  (register TRACE_DISABLE Int "TRACE_DISABLE")
+  (register TRACE_TIMES Int "TRACE_TIMES")
+  (register TRACE_TPUTS Int "TRACE_TPUTS")
+  (register TRACE_UPDATE Int "TRACE_UPDATE")
+  (register TRACE_MOVE Int "TRACE_MOVE")
+  (register TRACE_CHARPUT Int "TRACE_CHARPUT")
+  (register TRACE_ORDINARY Int "TRACE_ORDINARY")
+  (register TRACE_CALLS Int "TRACE_CALLS")
+  (register TRACE_VIRTPUT Int "TRACE_VIRTPUT")
+  (register TRACE_IEVENT Int "TRACE_IEVENT")
+  (register TRACE_BITS Int "TRACE_BITS")
+  (register TRACE_ICALLS Int "TRACE_ICALLS")
+  (register TRACE_CCALLS Int "TRACE_CCALLS")
+  (register TRACE_DATABASE Int "TRACE_DATABASE")
+  (register TRACE_ATTRS Int "TRACE_ATTRS")
+  (register TRACE_MAXIMUM Int "TRACE_MAXIMUM")
+)
