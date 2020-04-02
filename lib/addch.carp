@@ -1,0 +1,10 @@
+;; Add character functions (see curs_addch)
+;; Each of these functions returns an Int indicating success or failure.
+(defmodule NCurses
+  (register addch (Fn [Chtype] Int) "addch")
+  (register waddch (Fn [(Ptr WINDOW) Chtype] Int) "waddch")
+  (register mvaddch (Fn [Int Int Chtype] Int) "mvaddch")
+  (register mvwaddch (Fn [(Ptr WINDOW) Int Int Chtype] Int) "mvwaddch")
+  (register echochar (Fn [Chtype] Int) "echochar")
+  (register wechochar (Fn [(Ptr WINDOW) Chtype] Int) "wechochar")
+)

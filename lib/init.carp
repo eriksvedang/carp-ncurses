@@ -1,0 +1,9 @@
+;; ncurses initialization functions (see curs_initscr)
+(defmodule NCurses
+  (register initscr (Fn [] (Ptr WINDOW)) "initscr")
+  (register isendwin (Fn [] Bool) "isendwin")
+  (register newterm (Fn [String (Ptr FILE) (Ptr FILE)] (Ptr SCREEN)) "newterm")
+  (register set-term (Fn [(Ptr SCREEN)] (Ptr SCREEN)) "set_term")
+  (register delscreen (Fn [(Ptr SCREEN)] ()) "delscreen")
+  (register endwin (Fn [] Int) "endwin")
+)
