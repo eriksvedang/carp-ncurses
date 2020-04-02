@@ -5,11 +5,11 @@
 
 (defn main []
   (do (ignore (initscr))
-      (start-color)
-      (init-pair 1 COLOR_BLACK COLOR_RED)
-      (init-pair 2 COLOR_BLUE COLOR_BLACK)
-      (init-pair 3 COLOR_GREEN COLOR_WHITE)
-      (attron (color-pair 1))
+      (ignore (start-color))
+      (ignore (init-pair (from-int 1) COLOR_BLACK COLOR_RED))
+      (ignore (init-pair (from-int 2) COLOR_BLUE COLOR_BLACK))
+      (ignore (init-pair (from-int 3) COLOR_GREEN COLOR_WHITE))
+      (ignore (attron (color-pair 1)))
       (ignore (refresh))
       (let [win (newwin 10 20 5 5)]
         (do

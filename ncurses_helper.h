@@ -13,6 +13,10 @@ typedef attr_t Attribute;
 typedef chtype Chtype;
 typedef short Short;
 
+Short NCurses_from_MINUS_int(int x) {
+  return (short)x;
+}
+
 Attribute *NCurses_attr_ptr() {
   Attribute* attributes;
   return attributes;
