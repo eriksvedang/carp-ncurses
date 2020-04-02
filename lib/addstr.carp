@@ -1,0 +1,12 @@
+;; Add string functions (see curs_addstr)
+;; Each of these functions returns an Int indicating success or failure.
+(defmodule NCurses
+  (register addstr (Fn [String] Int) "addstr")
+  (register addnstr (Fn [String Int] Int) "addnstr")
+  (register waddstr (Fn [(Ptr WINDOW) String] Int) "waddstr")
+  (register waddnstr (Fn [(Ptr WINDOW) String Int] Int) "waddnstr")
+  (register mvaddstr (Fn [Int Int String] Int) "mvaddstr")
+  (register mvaddnstr (Fn [Int Int String Int] Int) "mvaddnstr")
+  (register mvwaddstr (Fn [(Ptr WINDOW) Int Int String] Int) "mvwaddstr")
+  (register mvwaddnstr (Fn [(Ptr WINDOW) Int Int String Int] Int) "mvwaddnstr")
+)

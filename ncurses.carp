@@ -4,80 +4,32 @@
 
 (register-type WINDOW)
 (register-type SCREEN)
-(register-type chtype)
+(register-type Chtype)
+;; Just a synonym for chtype under the hood.
+(register-type Attribute)
+(register-type Short)
+
+(load "lib/addch.carp")
+(load "lib/addstr.carp")
+(load "lib/attr.carp")
+(load "lib/color.carp")
+(load "lib/getch.carp")
+(load "lib/init.carp")
+(load "lib/refresh.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
   (register OK Int "OK")
   (register TRUE Int "TRUE")
   (register FALSE Int "FALSE")
-
-  ;; Initialization functions (see curs_initscr)
-  (register initscr (Fn [] (Ptr WINDOW)) "initscr")
-  (register isendwin (Fn [] Bool) "isendwin")
-  (register newterm (Fn [String (Ptr FILE) (Ptr FILE)] (Ptr SCREEN)) "newterm")
-  (register set-term (Fn [(Ptr SCREEN)] (Ptr SCREEN)) "set_term")
-  (register delscreen (Fn [(Ptr SCREEN)] ()) "delscreen")
-  (register endwin (Fn [] Int) "endwin")
-
+  
   (register printw (Fn [String] ()) "printw") ;; memory leak, switch to (Ptr Char)
   (register move (Fn [Int Int] ()) "move")
 
-  ;; Add character functions (see curs_addch)
-  ;; Each of these functions returns an Int indicating success or failure.
-  (register addch (Fn [chtype] Int) "addch")
-  (register waddch (Fn [(Ptr WINDOW) chtype] Int) "waddch")
-  (register mvaddch (Fn [Int Int chtype] Int) "mvaddch")
-  (register mvwaddch (Fn [(Ptr WINDOW) Int Int chtype] Int) "mvwaddch")
-  (register echochar (Fn [chtype] Int) "echochar")
-  (register wechochar (Fn [(Ptr WINDOW) chtype] Int) "wechochar")
-
-  ;; Add string functions (see curs_addstr)
-  ;; Each of these functions returns an Int indicating success or failure.
-  (register addstr (Fn [String] Int) "addstr")
-  (register addnstr (Fn [String Int] Int) "addnstr")
-  (register waddstr (Fn [(Ptr WINDOW) String] Int) "waddstr")
-  (register waddnstr (Fn [(Ptr WINDOW) String Int] Int) "waddnstr")
-  (register mvaddstr (Fn [Int Int String] Int) "mvaddstr")
-  (register mvaddnstr (Fn [Int Int String Int] Int) "mvaddnstr")
-  (register mvwaddstr (Fn [(Ptr WINDOW) Int Int String] Int) "mvwaddstr")
-  (register mvwaddnstr (Fn [(Ptr WINDOW) Int Int String Int] Int)
-  "mvwaddnstr")
-
-  ;; Get character functions
-  (register getch (Fn [] Int) "getch")
-  (register wgetch (Fn [(Ptr WINDOW)] Int) "wgetch")
-  (register mvgetch (Fn [Int Int] Int) "mvgetch")
-  (register mvwgetch (Fn [(Ptr WINDOW) Int Int] Int) "mvwgetch")
-  (register ungetch (Fn [Int] Int) "ungetch")
-  (register has-key (Fn [Int] Int) "has_key")
-
-  ;; Refresh functions
-  (register refresh (Fn [] Int) "refresh")
-  (register wrefresh (Fn [(Ptr WINDOW)] Int) "wrefresh")
-  (register wnoutrefresh (Fn [(Ptr WINDOW)] Int) "wnoutrefresh")
-  (register doupdate (Fn [] Int) "doupdate")
-  (register redrawwin (Fn [(Ptr WINDOW)] Int) "redrawwin")
-  (register wredrawln (Fn [(Ptr WINDOW) Int Int] Int) "wredrawln")
-
+  (register from-int (Fn [Int] Short))
   ;; From ncurses_helper.h
   (register width (Fn [] Int))
   (register height (Fn [] Int))
-
-  ;; Colors
-  (register start-color (Fn [] ()) "start_color")
-  (register init-pair (Fn [Int Int Int] ()) "init_pair")
-  (register attron (Fn [Int] ()) "attron")
-  (register color-pair (Fn [Int] Int) "COLOR_PAIR")
-  (register COLOR_BLACK Int "COLOR_BLACK")
-  (register COLOR_RED Int "COLOR_RED")
-  (register COLOR_RED Int "COLOR_RED")
-  (register COLOR_GREEN Int "COLOR_GREEN")
-  (register COLOR_YELLOW Int "COLOR_YELLOW")
-  (register COLOR_BLUE Int "COLOR_BLUE")
-  (register COLOR_MAGENTA Int "COLOR_MAGENTA")
-  (register COLOR_CYAN Int "COLOR_CYAN")
-  (register COLOR_WHITE Int "COLOR_WHITE")
 
   ;; Windows
   (register wbkgd (Fn [(Ptr WINDOW) Int] ()) "wbkgd")
@@ -86,4 +38,4 @@
   (register wrefresh (Fn [(Ptr WINDOW)] ()) "wrefresh")
   (register box (Fn [(Ptr WINDOW) Int Int] ()) "box")
   (register mvwprintw (Fn [(Ptr WINDOW) Int Int String] ()) "mvwprintw") ;; Leak!
-  )
+)

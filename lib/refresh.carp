@@ -1,0 +1,9 @@
+;; Refresh functions (see curs_refresh)
+(defmodule NCurses
+  (register refresh (Fn [] Int) "refresh")
+  (register wrefresh (Fn [(Ptr WINDOW)] Int) "wrefresh")
+  (register wnoutrefresh (Fn [(Ptr WINDOW)] Int) "wnoutrefresh")
+  (register doupdate (Fn [] Int) "doupdate")
+  (register redrawwin (Fn [(Ptr WINDOW)] Int) "redrawwin")
+  (register wredrawln (Fn [(Ptr WINDOW) Int Int] Int) "wredrawln")
+)

@@ -1,0 +1,9 @@
+;; Get character functions (see curs_getch)
+(defmodule NCurses
+  (register getch (Fn [] Int) "getch")
+  (register wgetch (Fn [(Ptr WINDOW)] Int) "wgetch")
+  (register mvgetch (Fn [Int Int] Int) "mvgetch")
+  (register mvwgetch (Fn [(Ptr WINDOW) Int Int] Int) "mvwgetch")
+  (register ungetch (Fn [Int] Int) "ungetch")
+  (register has-key (Fn [Int] Int) "has_key")
+)
