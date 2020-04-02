@@ -1,0 +1,9 @@
+;; ncurses memleak functions (see curs_memleak)
+;; These functions typically aren't available and usually won't be called
+;; directly. However, they can be optionally compiled into the library and may
+;; be available on some systems. We include them here for completeness.
+(defmodule NCurses
+  (register nc-freeall (Fn [] ()) "_nc_freeall")
+  (register nc-free-and-exit (Fn [Int] ()) "_nc_free_and_exit")
+  (register nc-free-tinfo (Fn [Int] ()) "_nc_free_tinfo")
+)

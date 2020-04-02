@@ -16,6 +16,7 @@
 (load "lib/getch.carp")
 (load "lib/init.carp")
 (load "lib/refresh.carp")
+(load "lib/memleaks.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
