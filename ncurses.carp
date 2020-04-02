@@ -20,6 +20,7 @@
 (load "lib/memleaks.carp")
 (load "lib/addchstr.carp")
 (load "lib/newpair.carp")
+(load "lib/defaultcolors.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
