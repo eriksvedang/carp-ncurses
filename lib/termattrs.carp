@@ -1,0 +1,15 @@
+;; ncurses termattr functions (see curs_termattr)
+;; These functions return information about a terminal
+(defmodule NCurses
+  (register baudrate (Fn [] Int) "baudrate")
+  (register erasechar (Fn [] Char) "erasechar")
+  (register erasewchar (Fn [(Ptr Wchar)] Int) "erasewchar")
+  (register has-ic (Fn [] Bool) "has_ic")
+  (register has-il (Fn [] Bool) "has_il")
+  (register killchar (Fn [] Char) "killchar")
+  (register killwchar (Fn [(Ptr Wchar)] Int) "killwchar")
+  (register longname (Fn [] (Ptr Char)) "longname")
+  (register term-attrs (Fn [] Attribute) "term_attrs")
+  (register termattrs (Fn [] Chtype) "termattrs")
+  (register termname (Fn [] (Ptr Char)) "termname")
+)

@@ -9,6 +9,7 @@
 (register-type Attribute)
 (register-type Short)
 (register-type MEVENT)
+(register-type Wchar)
 
 (load "lib/addch.carp")
 (load "lib/addstr.carp")
@@ -21,6 +22,7 @@
 (load "lib/addchstr.carp")
 (load "lib/newpair.carp")
 (load "lib/defaultcolors.carp")
+(load "lib/termattrs.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
