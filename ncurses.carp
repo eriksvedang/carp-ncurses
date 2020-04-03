@@ -45,6 +45,7 @@
 (load "lib/keydefined.carp")
 (load "lib/wresize.carp")
 (load "lib/legacycoding.carp")
+(load "lib/scrdump.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
