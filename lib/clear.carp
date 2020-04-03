@@ -1,0 +1,11 @@
+;; ncurses clear functions (see curs_clear)
+(defmodule NCurses
+  (register erase (Fn [] Int) "erase")
+  (register werase (Fn [(Ptr WINDOW)] Int) "werase")
+  (register clear (Fn [] Int) "clear")
+  (register wclear (Fn [(Ptr WINDOW)] Int) "wclear")
+  (register clrtobot (Fn [] Int) "clrtobot")
+  (register wclrtobot (Fn [(Ptr WINDOW)] Int) "wclrtobot")
+  (register clrtoeol (Fn [] Int) "clrtoeol")
+  (register wclrtoeol (Fn [(Ptr WINDOW)] Int) "wclrtoeol")
+)
