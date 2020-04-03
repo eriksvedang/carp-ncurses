@@ -43,6 +43,7 @@
 (load "lib/print.carp")
 (load "lib/keyok.carp")
 (load "lib/keydefined.carp")
+(load "lib/wresize.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
