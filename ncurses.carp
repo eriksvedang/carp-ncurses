@@ -52,6 +52,7 @@
 (load "lib/insstr.carp")
 (load "lib/insch.carp")
 (load "lib/instr.carp")
+(load "lib/inchstr.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
