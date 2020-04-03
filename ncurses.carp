@@ -33,6 +33,7 @@
 (load "lib/kernel.carp")
 (load "lib/extend.carp")
 (load "lib/definekey.carp")
+(load "lib/delch.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")

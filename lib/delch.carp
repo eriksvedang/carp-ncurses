@@ -1,0 +1,7 @@
+;; ncurses delch functions (see curs_delch)
+(defmodule NCurses
+  (register delch (Fn [] Int) "delch")
+  (register wdelch (Fn [(Ptr WINDOW)] Int) "wdelch")
+  (register mvdelch (Fn [Int Int] Int) "mvdelch")
+  (register mvwdelch (Fn [(Ptr WINDOW) Int Int] Int) "mvwdelch")
+)
