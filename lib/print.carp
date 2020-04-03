@@ -1,0 +1,4 @@
+;; ncurses mcprint function (see curs_print)
+(defmodule NCurses
+  (register mcprint (Fn [(Ptr Char) Int] Int) "mcprint")
+)
