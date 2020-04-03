@@ -1,0 +1,11 @@
+;; ncurses getstr functions (see curs_getstr)
+(defmodule NCurses
+  (register getstr (Fn [(Ptr Char)] Int) "getstr")
+  (register getnstr (Fn [(Ptr Char) Int] Int) "getnstr")
+  (register wgetstr (Fn [(Ptr WINDOW) (Ptr Char)] Int) "wgetstr")
+  (register wgetnstr (Fn [(Ptr WINDOW) (Ptr Char) Int] Int) "wgetnstr")
+  (register mvgetstr (Fn [Int Int (Ptr Char)] Int) "mvgetstr")
+  (register mvgetnstr (Fn [Int Int (Ptr Char) Int] Int) "mvgetnstr")
+  (register mvwgetstr (Fn [(Ptr WINDOW) Int Int (Ptr Char)] Int) "mvwgetstr")
+  (register mvwgetnstr (Fn [(Ptr WINDOW) Int Int (Ptr Char) Int] Int) "mvwgetnstr")
+)
