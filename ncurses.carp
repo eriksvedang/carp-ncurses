@@ -38,6 +38,7 @@
 (load "lib/move.carp")
 (load "lib/legacy.carp")
 (load "lib/getyx.carp")
+(load "lib/scroll.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")

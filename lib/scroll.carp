@@ -1,0 +1,6 @@
+;; ncurses scroll functions
+(defmodule NCurses
+  (register scroll (Fn [(Ptr WINDOW)] Int) "scroll")
+  (register scrl (Fn [Int] Int) "scrl")
+  (register wscrl (Fn [(Ptr WINDOW) Int] Int) "wscrl")
+)
