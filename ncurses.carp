@@ -48,6 +48,7 @@
 (load "lib/scrdump.carp")
 (load "lib/resizeterm.carp")
 (load "lib/touch.carp")
+(load "lib/opaque.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
