@@ -50,6 +50,7 @@
 (load "lib/touch.carp")
 (load "lib/opaque.carp")
 (load "lib/insstr.carp")
+(load "lib/insch.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
