@@ -34,6 +34,7 @@
 (load "lib/extend.carp")
 (load "lib/definekey.carp")
 (load "lib/delch.carp")
+(load "lib/deleteln.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
