@@ -1,0 +1,13 @@
+;; ncurses legacy functions (see curs_legacy)
+(defmodule NCurses
+  (register getattrs (Fn [(Ptr WINDOW)] Int) "getattrs")
+  (register getbegx (Fn [(Ptr WINDOW)] Int) "getbegx")
+  (register getbegy (Fn [(Ptr WINDOW)] Int) "getbegy")
+  (register getcurx (Fn [(Ptr WINDOW)] Int) "getcurx")
+  (register getcury (Fn [(Ptr WINDOW)] Int) "getcury")
+  (register getmaxx (Fn [(Ptr WINDOW)] Int) "getmaxx")
+  (register getmaxy (Fn [(Ptr WINDOW)] Int) "getmaxy")
+  (register getparx (Fn [(Ptr WINDOW)] Int) "getparx")
+  (register getpary (Fn [(Ptr WINDOW)] Int) "getpary")
+)
+
