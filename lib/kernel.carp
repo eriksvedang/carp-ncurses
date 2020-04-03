@@ -8,7 +8,7 @@
   (register savetty (Fn [] Int) "savetty")
   (register getsyx (Fn [Int Int] ()) "getsyx")
   (register setsyx (Fn [Int Int] ()) "setsyx")
-  (register ripoffline (Fn [Int (Ptr (Fn [(Ptr WINDOW Int)] Int))] Int) "ripoffline")
+  (register ripoffline (Fn [Int (Ptr (Fn [(Ptr WINDOW) Int] Int))] Int) "ripoffline")
   (register curs-set (Fn [Int] Int) "curs_set")
   (register napms (Fn [Int] Int) "napms")
 )
