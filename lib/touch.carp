@@ -1,0 +1,9 @@
+;; ncurses touch functions (see curs_touch)
+(defmodule NCurses
+  (register touchwin (Fn [(Ptr WINDOW)] Int) "touchwin")
+  (register touchline (Fn [(Ptr WINDOW) Int Int] Int) "touchline")
+  (register untouchwin (Fn [(Ptr WINDOW)] Int) "untouchwin")
+  (register wtouchln (Fn [(Ptr WINDOW) Int Int Int] Int) "wtouchln")
+  (register is-linetouched? (Fn [(Ptr WINDOW) Int] Bool) "is_linetouched")
+  (register is-wintouched? (Fn [(Ptr WINDOW)] Bool) "is_wintouched")
+)

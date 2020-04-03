@@ -47,6 +47,7 @@
 (load "lib/legacycoding.carp")
 (load "lib/scrdump.carp")
 (load "lib/resizeterm.carp")
+(load "lib/touch.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
