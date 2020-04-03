@@ -1,0 +1,10 @@
+;; ncurses bkgrnd functions (see curs_bkgrnd)
+;; Note, these routines require wide character support
+(defmodule NCurses
+  (register bkgrnd (Fn [(Ptr Cchar)] Int) "bkgrnd")
+  (register wbkgrnd (Fn [(Ptr WINDOW) (Ptr Cchar)] Int) "wbkgrnd")
+  (register bkgrndset (Fn [(Ptr Cchar)] ()) "bkgrndset")
+  (register wbkgrndset (Fn [(Ptr WINDOW) (Ptr Cchar)] ()) "wbkgrndset")
+  (register getbkgrnd (Fn [(Ptr Cchar)] Int) "getbkgrnd")
+  (register wgetbkgrnd (Fn [(Ptr WINDOW) (Ptr Cchar)] Int) "wgetbkgrnd")
+)
