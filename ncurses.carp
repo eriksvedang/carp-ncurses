@@ -32,6 +32,7 @@
 (load "lib/overlay.carp")
 (load "lib/kernel.carp")
 (load "lib/extend.carp")
+(load "lib/definekey.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
