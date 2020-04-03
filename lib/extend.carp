@@ -1,0 +1,5 @@
+;; ncurses extend functions (see curs_extend)
+(defmodule NCurses
+  (register curses-version (Fn [] (Ptr Char)) "curses_version")
+  (register use-extended-names (Fn [Bool] Int) "use_extended_names")
+)
