@@ -18,8 +18,22 @@ typedef wchar_t Wchar;
 typedef cchar_t Cchar;
 #endif
 
-Short NCurses_from_MINUS_int(int x) {
+Short NCurses_Short_from_MINUS_int(int x) {
   return (short)x;
+}
+
+// This function may seem redundant at first glance; why can't we just pass Ints
+// directly? However, chtype is conditionally defined. On machines that don't
+// use 64 bits for longs and pointers and 32 for int, it's defined as unsigned.
+// On machines that do use 64bits, it's correctly assigned to a uint32.
+//
+// We provide the wrapper type and this conversion function to account for the
+// rare case in which Carp's Int type doesn't correspond to the chtype.
+//
+// We could also just pass Carp's UInt32 type, but the cast is more resilient in
+// the face of future changes or old versions which define chtype differently.
+Chtype NCurses_Chtype_from_MINUS_int(int x) {
+  return (chtype)x;
 }
 
 Attribute *NCurses_attr_ptr() {

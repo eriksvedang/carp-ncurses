@@ -38,7 +38,10 @@
   (register printw (Fn [String] ()) "printw") ;; memory leak, switch to (Ptr Char)
   (register move (Fn [Int Int] ()) "move")
 
-  (register from-int (Fn [Int] Short))
+(defmodule Short
+  (register from-int (Fn [Int] Short)))
+(defmodule Chtype
+  (register from-int (Fn [Int] Chtype)))
   ;; From ncurses_helper.h
   (register width (Fn [] Int))
   (register height (Fn [] Int))
