@@ -25,6 +25,7 @@
 (load "lib/termattrs.carp")
 (load "lib/beep.carp")
 (load "lib/bkgd.carp")
+(load "lib/border.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
