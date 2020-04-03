@@ -1,0 +1,4 @@
+;; ncurses keybound function (see keybound)
+(defmodule NCurses
+  (register keybound (Fn [Int Int] (Ptr Char)) "keybound")
+)
