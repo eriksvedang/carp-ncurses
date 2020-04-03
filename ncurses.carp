@@ -41,6 +41,7 @@
 (load "lib/scroll.carp")
 (load "lib/keybound.carp")
 (load "lib/print.carp")
+(load "lib/keyok.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
