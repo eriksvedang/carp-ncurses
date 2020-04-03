@@ -28,6 +28,7 @@
 (load "lib/border.carp")
 (load "lib/inopts.carp")
 (load "lib/clear.carp")
+(load "lib/outopts.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")

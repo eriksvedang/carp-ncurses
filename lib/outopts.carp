@@ -1,0 +1,14 @@
+;; ncurses outopts functions (see curs_outopts)
+(defmodule NCurses
+  (register clearok (Fn [(Ptr WINDOW) Bool] Int) "clearok")
+  (register idlok (Fn [(Ptr WINDOW) Bool] Int) "idlok")
+  (register idcok (Fn [(Ptr WINDOW) Bool] ()) "idcok")
+  (register immedok (Fn [(Ptr WINDOW) Bool] ()) "immedok")
+  (register leaveok (Fn [(Ptr WINDOW) Bool] Int) "leaveok")
+  (register setscrreg (Fn [Int Int] Int) "setscrreg")
+  (register wsetscrreg (Fn [(Ptr WINDOW) Int Int] Int) "wsetscrreg")
+  (register scrollok (Fn [(Ptr WINDOW) Bool] Int) "scrollok")
+  (register nl (Fn [] Int) "nl")
+  (register nonl (Fn [] Int) "nonl")
+)
+
