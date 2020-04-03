@@ -35,6 +35,7 @@
 (load "lib/definekey.carp")
 (load "lib/delch.carp")
 (load "lib/deleteln.carp")
+(load "lib/move.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
@@ -43,7 +44,6 @@
   (register FALSE Int "FALSE")
   
   (register printw (Fn [String] ()) "printw") ;; memory leak, switch to (Ptr Char)
-  (register move (Fn [Int Int] ()) "move")
 
 (defmodule Short
   (register from-int (Fn [Int] Short)))
