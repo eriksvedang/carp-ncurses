@@ -1,0 +1,8 @@
+;; ncurses new pair functions (see new_pair)
+;; Extensions to the curses library that enable you to dynamically allocate
+;; color pairs using a foreground and background. See `man new_pair` for more.
+(defmodule NCurses
+  (register alloc-pair (Fn [Int Int] Int) "alloc_pair")
+  (register find-pair (Fn [Int Int] Int) "find_pair")
+  (register free-pair (Fn [Int] Int) "free_pair")
+)

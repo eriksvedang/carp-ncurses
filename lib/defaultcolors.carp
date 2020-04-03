@@ -1,0 +1,5 @@
+;; ncurses default colors functions (see default_colors)
+(defmodule NCurses
+  (register use-default-colors (Fn [] Int) "use_default_colors")
+  (register assume-default-colors (Fn [Int Int] Int) "assume_default_colors")
+)

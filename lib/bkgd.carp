@@ -1,0 +1,9 @@
+;; ncurses bkgd functions (see curs_bkgd)
+;; These functions manipulate window backgrounds.
+(defmodule NCurses
+  (register bkgdset (Fn [Chtype] ()) "bkgdset")
+  (register wbkgdset (Fn [(Ptr WINDOW) Chtype] ()) "wbkgdset")
+  (register bkgd (Fn [Chtype] Int) "bkgd")
+  (register wbkgd (Fn [(Ptr WINDOW) Chtype] Int) "wbkgd")
+  (register getbkgd (Fn [(Ptr WINDOW)] Chtype) "getbkgd")
+)

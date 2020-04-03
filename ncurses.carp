@@ -8,6 +8,8 @@
 ;; Just a synonym for chtype under the hood.
 (register-type Attribute)
 (register-type Short)
+(register-type MEVENT)
+(register-type Wchar)
 
 (load "lib/addch.carp")
 (load "lib/addstr.carp")
@@ -16,6 +18,13 @@
 (load "lib/getch.carp")
 (load "lib/init.carp")
 (load "lib/refresh.carp")
+(load "lib/memleaks.carp")
+(load "lib/addchstr.carp")
+(load "lib/newpair.carp")
+(load "lib/defaultcolors.carp")
+(load "lib/termattrs.carp")
+(load "lib/beep.carp")
+(load "lib/bkgd.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
