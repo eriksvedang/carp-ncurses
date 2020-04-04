@@ -1,0 +1,33 @@
+;; ncurses terminfo functions (see curs_terminfo)
+(defmodule NCurses
+  (defmodule Term
+    (register cur-term (Ptr TERMINAL) "cur_term")
+    (register boolnames (Array (Ptr Char)) "boolnames")
+    (register boolcodes (Array (Ptr Char)) "boolcodes")
+    (register boolfnames (Array (Ptr Char)) "boolfnames")
+    (register numnames (Array (Ptr Char)) "numnames")
+    (register numcodes (Array (Ptr Char)) "numcodes")
+    (register numfnames (Array (Ptr Char)) "numfnames")
+    (register strnames (Array (Ptr Char)) "strnames")
+    (register strcodes (Array (Ptr Char)) "strcodes")
+    (register strfnames (Array (Ptr Char)) "strfnames")
+
+    (register setupterm (Fn [(Ptr Char) Int (Ptr Int)] Int) "setupterm")
+    (register setterm (Fn [(Ptr Char)] Int) "setterm")
+    (register set-curterm (Fn [(Ptr TERMINAL)] (Ptr TERMINAL)) "set_curterm")
+    (register del-curterm (Fn [(Ptr TERMINAL)] Int) "del_curterm")
+    (register restartterm (Fn [(Ptr Char) Int (Ptr Int)] Int) "restartterm")
+    ;; TODO: register tparm, a vararg function.
+    (register tputs (Fn [(Ptr Char) Int (Ptr (Fn [Int] Int))] Int) "tputs")
+    (register putp (Fn [(Ptr Char)] Int) "putp")
+    (register vidputs (Fn [Chtype (Ptr (Fn [Int] Int))] Int) "vidputs")
+    (register vidattr (Fn [Chtype] Int) "vidattr")
+    (register vid-puts (Fn [Attribute Short (Ptr Int) (Ptr (Fn [Int] Int))] Int) "vid_puts")
+    (register vid-attr (Fn [Attribute Short (Ptr Int)] Int) "vid_attr")
+    (register mvcur (Fn [Int Int Int Int] Int) "mvcur")
+    (register tigetflag (Fn [(Ptr Char)] Int) "tigetflag")
+    (register tigetnum (Fn [(Ptr Char)] Int) "tigetnum")
+    (register tigetstr (Fn [(Ptr Char)] (Ptr Char)) "tigetstr")
+    ;; TODO: register tiparm, a vararg function
+  )
+)
