@@ -3,3 +3,4 @@
 (register-type TERMINAL)
 
 (load "terminfo.carp")
+(load "termcap.carp")
