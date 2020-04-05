@@ -6,7 +6,6 @@
 (register-type SCREEN)
 (register-type Chtype)
 ;; Just a synonym for chtype under the hood.
-(register-type Attribute)
 (register-type Short)
 (register-type MEVENT)
 (register-type Wchar)

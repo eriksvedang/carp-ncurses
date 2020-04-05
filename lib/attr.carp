@@ -11,6 +11,10 @@
 ;; final void pointer as an argument take a `(Ptr Int)` since we can pass NULL
 ;; for the functions that don't use the argument, and an Int Pointer for those
 ;; that do.
+
+;; Opaque attribute type.
+(register-type Attribute)
+
 (defmodule NCurses
   (register attr-ptr (Fn [] (Ptr Attribute)) "NCurses_attr_ptr")
   (register attr-get (Fn [(Ptr Attribute) (Ptr Short) (Ptr Int)] Int) "attr_get")
@@ -37,4 +41,22 @@
   (register wstandend (Fn [(Ptr WINDOW)] Int) "wstandend")
   (register standout (Fn [] Int) "standout")
   (register wstandout (Fn [(Ptr WINDOW)] Int) "wstandout")
+
+  ;; Attributes
+  (register A_ALTCHARSET Attribute "A_ALTCHARSET")
+  (register A_BLINK Attribute "A_BLINK")
+  (register A_BOLD Attribute "A_BOLD")
+  (register A_DIM Attribute "A_DIM")
+  (register A_INVIS Attribute "A_INVIS")
+  (register A_NORMAL Attribute "A_NORMAL")
+  (register A_REVERSE Attribute "A_REVERSE")
+  (register A_STANDOUT Attribute "A_STANDOUT")
+  (register A_UNDERLINE Attribute "A_UNDERLINE")
+  (register A_PROTECT Attribute "A_PROTECT")
+  (register A_HORIZONTAL Attribute "A_HORIZONTAL")
+  (register A_LEFT Attribute "A_LEFT")
+  (register A_LOW Attribute "A_LOW")
+  (register A_RIGHT Attribute "A_RIGHT")
+  (register A_TOP Attribute "A_RIGHT")
+  (register A_VERTICAL Attribute "A_VERTICAL")
 )
