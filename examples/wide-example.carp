@@ -1,0 +1,14 @@
+(load "../ncurses-wide.carp")
+(use NCurses)
+
+(defn main [] 
+  (let-do [win (Wide.initscr)
+           wchar (Wide.widechar A_NORMAL @"\u2665")
+           otherwchar (Wide.widechar A_NORMAL @"😀foo")]
+    (ignore (addstr @"I "))
+    (ignore (Wide.addch (address wchar)))
+    (ignore (addstr @" Carp! "))
+    ;; Wide.widechar will only convert the first character in the sequence.
+    (ignore (Wide.addch (address otherwchar)))
+    (ignore (getch))
+    (endwin)))
