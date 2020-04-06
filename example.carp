@@ -14,10 +14,10 @@
       (let [win (newwin 10 20 5 5)]
         (do
           ;;(wattron win (color-pair 3))
-          (wbkgd win (color-pair 2))
+          (ignore (wbkgd win (Chtype.from-int (color-pair 2))))
           (printw @"YEAH")
           (mvwprintw win 0 0 @"Hej")
-          (box win 0 0)
+          (ignore (box win (Chtype.from-int 0) (Chtype.from-int 0)))
           (wrefresh win)))
       (while true
         (do

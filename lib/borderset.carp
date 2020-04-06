@@ -1,0 +1,18 @@
+;; ncurses borderset functions (see curs_border_set)
+;; Requires wide character support.
+(defmodule NCurses
+  (register border-set
+    (Fn [Cchar Cchar Cchar Cchar Cchar Cchar Cchar Cchar] Int) "border_set")
+  (register wborder-set
+    (Fn [(Ptr WINDOW) Cchar Cchar Cchar Cchar Cchar Cchar Cchar Cchar] Int)
+    "wborder_set")
+  (register box-set (Fn [(Ptr WINDOW) Cchar Cchar] Int) "box_set")
+  (register hline-set (Fn [Cchar Int] Int) "hline_set")
+  (register whline-set (Fn [(Ptr WINDOW) Cchar Int] Int) "whline_set")
+  (register vline-set (Fn [Cchar Int] Int) "vline_set")
+  (register wvline-set (Fn [(Ptr WINDOW) Cchar Int] Int) "wvline_set")
+  (register mvhline-set (Fn [Int Int Cchar Int] Int) "mvhline_set")
+  (register mvwhline-set (Fn [(Ptr WINDOW) Int Int Cchar Int] Int) "mvwhline_set")
+  (register mvvline-set (Fn [Int Int Cchar Int] Int) "mvvline_set")
+  (register mvwvline-set (Fn [(Ptr WINDOW) Int Int Cchar Int] Int) "mvwvline_set")
+)
