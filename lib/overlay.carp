@@ -1,0 +1,7 @@
+;; ncurses overlay functions (see curs_overlay)
+(defmodule NCurses
+  (register overlay (Fn [(Ptr WINDOW) (Ptr WINDOW)] Int) "overlay")
+  (register overwrite (Fn [(Ptr WINDOW) (Ptr WINDOW)] Int) "overwrite")
+  (register copywin
+    (Fn [(Ptr WINDOW) (Ptr WINDOW) Int Int Int Int Int Int Int] Int) "copywin")
+)

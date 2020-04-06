@@ -1,0 +1,4 @@
+;; ncurses wresize function (see wresize)
+(defmodule NCurses
+  (register wresize (Fn [(Ptr WINDOW) Int Int] Int) "wresize")
+)

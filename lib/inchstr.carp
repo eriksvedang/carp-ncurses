@@ -1,0 +1,11 @@
+;; ncurses inchstr functions (see curs_inchstr)
+(defmodule NCurses
+  (register inchstr (Fn [(Ptr Chtype)] Int) "inchstr")
+  (register inchnstr (Fn [(Ptr Chtype) Int] Int) "inchnstr")
+  (register winchstr (Fn [(Ptr WINDOW) (Ptr Chtype)] Int) "winchstr")
+  (register winchnstr (Fn [(Ptr WINDOW) (Ptr Chtype) Int] Int) "winchnstr")
+  (register mvinchstr (Fn [Int Int (Ptr Chtype)] Int) "mvinchstr")
+  (register mvinchnstr (Fn [Int Int (Ptr Chtype) Int] Int) "mvinchnstr")
+  (register mvwinchstr (Fn [(Ptr WINDOW) Int Int (Ptr Chtype)] Int) "mvwinchstr")
+  (register mvwinchnstr (Fn [(Ptr WINDOW) Int Int (Ptr Chtype) Int] Int) "mvwinchnstr")
+)

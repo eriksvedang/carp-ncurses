@@ -1,0 +1,9 @@
+;; ncurses deleteln functions (see curs_deleteln)
+(defmodule NCurses
+  (register deleteln (Fn [] Int) "deleteln")
+  (register wdeleteln (Fn [(Ptr WINDOW)] Int) "wdeleteln")
+  (register insdelln (Fn [Int] Int) "insdelln")
+  (register winsdelln (Fn [(Ptr WINDOW) Int] Int) "winsdelln")
+  (register insertln (Fn [] Int) "insertln")
+  (register winsertln (Fn [(Ptr WINDOW)] Int) "winsertln")
+)

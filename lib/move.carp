@@ -1,0 +1,5 @@
+;; ncurses move functions (see curs_move)
+(defmodule NCurses 
+  (register move (Fn [Int Int] Int) "move")
+  (register wmove (Fn [(Ptr WINDOW) Int Int] Int) "wmove")
+)

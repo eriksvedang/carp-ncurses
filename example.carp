@@ -24,10 +24,10 @@
           (let-do [w (width)
                    h (height)
                    s (str* "Hello! " w ", " h)]
-            (move (/ h 2) (- (/ w 2)
-                             (/ (length &s) 2)))
+            (ignore (move (/ h 2) (- (/ w 2)
+                             (/ (length &s) 2))))
             (printw s)
-            (move 30 x)
+            (ignore (move 30 x))
             (printw @"@")
             )
           (ignore (refresh))

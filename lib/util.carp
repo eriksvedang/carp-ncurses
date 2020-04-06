@@ -1,0 +1,16 @@
+;; ncurses util functions (see curs_util)
+(defmodule NCurses
+  (register unctrl (Fn [Chtype] (Ptr Char)) "unctrl")
+  ;; TODO: Move into Wide submodule
+  (register wunctrl (Fn [(Ptr Cchar)] (Ptr Wchar)) "wunctrl")
+  (register keyname (Fn [Int] (Ptr Char)) "keyname")
+  (register key-name (Fn [WChar] (Ptr Char)) "key_name")
+  (register filter (Fn [] ()) "filter")
+  (register nofilter (Fn [] ()) "nofilter")
+  (register use-env (Fn [Bool] ()) "use_env")
+  (register use-tioctl (Fn [Bool] ()) "use_tioctl")
+  (register putwin (Fn [(Ptr WINDOW) (Ptr FILE)] Int) "putwin")
+  (register getwin (Fn [(Ptr FILE)] (Ptr WINDOW)) "getwin")
+  (register delay-output (Fn [Int] Int) "delay_output")
+  (register flushinp (Fn [] Int) "flushinp")
+)

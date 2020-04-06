@@ -1,0 +1,6 @@
+;; ncurses resizeterm functions (see resizeterm)
+(defmodule NCurses
+  (register is-term-resized? (Fn [Int Int] Bool) "is_term_resized")
+  (register resize-term (Fn [Int Int] Int) "resize_term")
+  (register resizeterm (Fn [Int Int] Int) "resizeterm")
+)

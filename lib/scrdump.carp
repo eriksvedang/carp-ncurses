@@ -1,0 +1,7 @@
+;; ncurses scr_dump functions (see curs_scr_dump)
+(defmodule NCurses
+  (register scr-dump (Fn [(Ptr Char)] Int) "scr_dump")
+  (register scr-restore (Fn [(Ptr Char)] Int) "scr_restore")
+  (register scr-init (Fn [(Ptr Char)] Int) "scr_init")
+  (register scr-set (Fn [(Ptr Char)] Int) "scr_set")
+)

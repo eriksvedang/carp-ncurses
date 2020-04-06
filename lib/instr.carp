@@ -1,0 +1,11 @@
+;; ncurses instr functions (see curs_instr)
+(defmodule NCurses
+  (register instr (Fn [(Ptr Char)] Int) "instr")
+  (register innstr (Fn [(Ptr Char) Int] Int) "innstr")
+  (register winstr (Fn [(Ptr WINDOW) (Ptr Char)] Int) "winstr")
+  (register winnstr (Fn [(Ptr WINDOW) (Ptr Char) Int] Int) "winnstr")
+  (register mvinstr (Fn [Int Int (Ptr Char)] Int) "mvinstr")
+  (register mvinnstr (Fn [Int Int (Ptr Char) Int] Int) "mvinnstr")
+  (register mvwinstr (Fn [(Ptr WINDOW) Int Int (Ptr Char)] Int) "mvwinstr")
+  (register mvwinnstr (Fn [(Ptr WINDOW) Int Int (Ptr Char) Int] Int) "mvwinnstr")
+)

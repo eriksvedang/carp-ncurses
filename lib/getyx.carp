@@ -1,0 +1,7 @@
+;; ncurses getyx functions (see curs_getyx)
+(defmodule NCurses
+  (register getyx (Fn [(Ptr WINDOW) Int Int] ()) "getyx")
+  (register getparyx (Fn [(Ptr WINDOW) Int Int] ()) "getparyx")
+  (register getbegyx (Fn [(Ptr WINDOW) Int Int] ()) "getbegyx")
+  (register getmaxyx (Fn [(Ptr WINDOW) Int Int] ()) "getmaxyx")
+)

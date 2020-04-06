@@ -1,0 +1,7 @@
+;; ncurses insch functions (see curs_insch)
+(defmodule NCurses
+  (register insch (Fn [Chtype] Int) "insch")
+  (register winsch (Fn [(Ptr WINDOW) Chtype] Int) "winsch")
+  (register mvinsch (Fn [Int Int Chtype] Int) "mvinsch")
+  (register mvwinsch (Fn [(Ptr WINDOW) Int Int Chtype] Int) "mvwinsch")
+)

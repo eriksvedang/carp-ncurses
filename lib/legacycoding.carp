@@ -1,0 +1,4 @@
+;; ncurses use_legacy_coding function (see legacy_coding)
+(defmodule NCurses
+  (register use-legacy-coding (Fn [Int] Int) "use_legacy_coding")
+)

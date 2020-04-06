@@ -1,0 +1,4 @@
+;; ncurses keyok function (see keyok)
+(defmodule NCurses
+  (register keyok (Fn [Int Bool] Int) "keyok")
+)

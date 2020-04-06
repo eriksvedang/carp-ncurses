@@ -1,0 +1,4 @@
+;; ncurses key_defined function (see key_defined)
+(defmodule NCurses
+  (register key-defined (Fn [(Ptr Char)] Int) "key_defined")
+)

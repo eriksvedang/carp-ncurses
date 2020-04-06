@@ -1,0 +1,7 @@
+;; ncurses inch functions (see curs_inch)
+(defmodule NCurses
+  (register inch (Fn [] Chtype) "inch")
+  (register winch (Fn [(Ptr WINDOW)] Chtype) "winch")
+  (register mvinch (Fn [Int Int] Chtype) "mvinch")
+  (register mvwinch (Fn [(Ptr WINDOW) Int Int] Chtype) "mvwinch")
+)
