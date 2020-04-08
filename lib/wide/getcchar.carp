@@ -1,0 +1,9 @@
+;; ncurses getcchar functions (see curs_getcchar)
+(defmodule NCurses
+  (defmodule Wide
+    (register getcchar 
+      (Fn [WideChar WideString Attribute Short (Ptr Int)] Int) "getcchar")
+    (register setcchar 
+      (Fn [WideChar WideString Attribute Short (Ptr Int)] Int) "setcchar")
+  )
+)
