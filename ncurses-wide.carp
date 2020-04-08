@@ -12,6 +12,7 @@
 (load "lib/wide/borderset.carp")
 (load "lib/wide/slk.carp")
 (load "lib/wide/getwch.carp")
+(load "lib/wide/getwstr.carp")
 
 (defmodule NCurses
   (defmodule Wide
