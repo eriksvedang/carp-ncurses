@@ -1,22 +1,13 @@
 ;; ncurses get_wstr functions (see curs_get_wstr)
 (defmodule NCurses
   (defmodule Wide
-    ;; TODO: These functions actually take a wint_t pointer as an argument, but
-    ;; WideString is an alias for wchar_t--this won't always work, the man page
-    ;; cites an edge case:
-    ;;
-    ;;     The latter function get_wch() can return a negative value while
-    ;;     wchar_t is an unsigned type.
-    ;;
-    ;; get_wstr and others are implemented as successive calls to get_wch, so
-    ;; this needs to be corrected.
-    (register get-wstr (Fn [WideString] Int) "get_wstr")
-    (register getn-wstr (Fn [WideString Int] Int) "getn_wstr")
-    (register wget-wstr (Fn [(Ptr WINDOW) WideString] Int) "wget_wstr")
-    (register wgetn-wstr (Fn [(Ptr WINDOW) WideString Int] Int) "wgetn_wstr")
-    (register mvget-wstr (Fn [Int Int WideString] Int) "mvget_wstr")
-    (register mvgetn-wstr (Fn [Int Int WideString Int] Int) "mvgetn_wstr")
-    (register mvwget-wstr (Fn [(Ptr WINDOW) Int Int WideString] Int) "mvwget_wstr")
-    (register mvwgetn-wstr (Fn [(Ptr WINDOW) Int Int WideString Int] Int) "mvwgetn_wstr")
+    (register get-wstr (Fn [(Ptr (Array WideInt))] Int) "get_wstr")
+    (register getn-wstr (Fn [(Ptr (Array WideInt)) Int] Int) "getn_wstr")
+    (register wget-wstr (Fn [(Ptr WINDOW) (Ptr (Array WideInt))] Int) "wget_wstr")
+    (register wgetn-wstr (Fn [(Ptr WINDOW) (Ptr (Array WideInt)) Int] Int) "wgetn_wstr")
+    (register mvget-wstr (Fn [Int Int (Ptr (Array WideInt))] Int) "mvget_wstr")
+    (register mvgetn-wstr (Fn [Int Int (Ptr (Array WideInt)) Int] Int) "mvgetn_wstr")
+    (register mvwget-wstr (Fn [(Ptr WINDOW) Int Int (Ptr (Array WideInt))] Int) "mvwget_wstr")
+    (register mvwgetn-wstr (Fn [(Ptr WINDOW) Int Int (Ptr (Array WideInt)) Int] Int) "mvwgetn_wstr")
   )
 )
