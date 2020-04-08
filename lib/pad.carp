@@ -5,6 +5,4 @@
   (register prefresh (Fn [(Ptr WINDOW) Int Int Int Int Int Int] Int) "prefresh")
   (register pnoutrefresh (Fn [(Ptr WINDOW) Int Int Int Int Int Int] Int) "pnoutrefresh")
   (register pechochar (Fn [(Ptr WINDOW) Chtype] Int) "pechochar")
-  ;; TODO: Move into a Wide submodule.
-  (register pecho-wchar (Fn [(Ptr WINDOW) Cchar] Int) "pecho_wchar")
 )
