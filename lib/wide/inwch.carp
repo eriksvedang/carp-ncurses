@@ -1,0 +1,9 @@
+;; ncurses in_wch functions (see curs_in_wch)
+(defmodule NCurses
+  (defmodule Wide
+    (register in-wch (Fn [(Ptr WideChar)] Int) "in_wch")
+    (register mvin-wch (Fn [Int Int (Ptr WideChar)] Int) "mvin_wch")
+    (register mvwin-wch (Fn [(Ptr WINDOW) Int Int (Ptr WideChar)] Int) "mvwin_wch")
+    (register win-wch (Fn [(Ptr WINDOW) (Ptr WideChar)] Int) "win_wch")
+  )
+)
