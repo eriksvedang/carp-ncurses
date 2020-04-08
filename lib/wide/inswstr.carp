@@ -1,0 +1,13 @@
+;; ncurses ins_wstr functions (see curs_ins_wstr)
+(defmodule NCurses
+  (defmodule Wide
+    (register ins-wstr (Fn [WideString] Int) "ins_wstr")
+    (register ins-nwstr (Fn [WideString Int] Int) "ins_nwstr")
+    (register wins-wstr (Fn [(Ptr WINDOW) WideString] Int) "wins_wstr")
+    (register wins-nwstr (Fn [(Ptr WINDOW) WideString Int] Int) "wins_nwstr")
+    (register mvins-wstr (Fn [Int Int WideString] Int) "mvins_wstr")
+    (register mvins-nwstr (Fn [Int Int WideString Int] Int) "mvins_nwstr")
+    (register mvwins-wstr (Fn [(Ptr WINDOW) Int Int WideString] Int) "mvwins_wstr")
+    (register mvwins-nwstr (Fn [(Ptr WINDOW) Int Int WideString Int] Int) "mvwins_nwstr")
+  )
+)
