@@ -16,6 +16,7 @@ typedef short Short;
 #if NCURSES_WIDECHAR
 #include <wchar.h>
 typedef wchar_t Wchar;
+typedef wchar_t* WideString;
 typedef cchar_t WideChar;
 
 WideChar NCurses_Wide_widechar(attr_t attrs, char* c) {
@@ -30,6 +31,16 @@ WideChar NCurses_Wide_widechar(attr_t attrs, char* c) {
   mbrtowc(&wchar, c, 4, &state);
   WideChar wide = {attrs, wchar};
   return wide;
+}
+
+WideString NCurses_Wide_widestring(const char* c) {
+  const char** p = &c;
+  mbstate_t state = {0};
+  size_t len = strlen(c);
+  wchar_t wchar[len];
+  mbsrtowcs(wchar, p, len, &state);
+  WideString wstring = wchar;
+  return wstring;
 }
 #endif
 

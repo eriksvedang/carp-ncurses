@@ -1,0 +1,13 @@
+;; ncurses add_wstr functions
+(defmodule NCurses
+  (defmodule Wide
+    (register addwstr (Fn [WideString] Int) "addwstr")
+    (register addnwstr (Fn [WideString Int] Int) "addnwstr")
+    (register waddwstr (Fn [(Ptr WINDOW) WideString] Int) "waddwstr")
+    (register waddnwstr (Fn [(Ptr WINDOW) WideString Int] Int) "waddnwstr")
+    (register mvaddwstr (Fn [Int Int WideString] Int) "mvaddwstr")
+    (register mvaddnwstr (Fn [Int Int WideString Int] Int) "mvaddnwstr")
+    (register mvwaddwstr (Fn [(Ptr WINDOW) Int Int WideString] Int) "mvwaddwstr")
+    (register mvwaddnwstr (Fn [(Ptr WINDOW) Int Int WideString Int] Int) "mvwaddnwstr")
+  )
+)
