@@ -2,6 +2,7 @@
 (load "ncurses.carp")
 (load "lib/wide/locale/locale.carp")
 
+(register-type Wchar)
 (register-type WideChar)
 (register-type WideString)
 
@@ -10,6 +11,7 @@
 (load "lib/wide/addwstr.carp")
 (load "lib/wide/borderset.carp")
 (load "lib/wide/slk.carp")
+(load "lib/wide/getwch.carp")
 
 (defmodule NCurses
   (defmodule Wide
