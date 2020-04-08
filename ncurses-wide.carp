@@ -9,6 +9,7 @@
 (load "lib/wide/addwchstr.carp")
 (load "lib/wide/addwstr.carp")
 (load "lib/wide/borderset.carp")
+(load "lib/wide/slk.carp")
 
 (defmodule NCurses
   (defmodule Wide
