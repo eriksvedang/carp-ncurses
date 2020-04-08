@@ -15,6 +15,7 @@
 (load "lib/wide/getwstr.carp")
 (load "lib/wide/getcchar.carp")
 (load "lib/wide/inwch.carp")
+(load "lib/wide/inwchstr.carp")
 
 (defmodule NCurses
   (defmodule Wide
