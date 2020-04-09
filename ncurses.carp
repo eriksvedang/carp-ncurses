@@ -55,6 +55,7 @@
 (load "lib/inchstr.carp")
 (load "lib/inch.carp")
 (load "lib/getstr.carp")
+(load "lib/window.carp")
 
 (defmodule NCurses
   (register ERR Int "ERR")
@@ -73,7 +74,6 @@
   (register height (Fn [] Int))
 
   ;; Windows
-  (register newwin (Fn [Int Int Int Int] (Ptr WINDOW)) "newwin")
   (register wattron (Fn [(Ptr WINDOW) Int] ()) "wattron")
   (register wrefresh (Fn [(Ptr WINDOW)] ()) "wrefresh")
   (register mvwprintw (Fn [(Ptr WINDOW) Int Int String] ()) "mvwprintw") ;; Leak!
