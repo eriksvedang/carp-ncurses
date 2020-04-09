@@ -1,0 +1,17 @@
+;; Typewriter example derived from Dan Gookin's *Guide to NCurses Programming*
+
+(load "../ncurses.carp")
+(use NCurses)
+
+(defn main []
+  (do
+    (ignore (initscr))
+    (ignore (addstr @"Type a few lines of text \n"))
+    (ignore (addstr @"Press ~ to quit \n"))
+    (ignore (refresh))
+    (while (not (= (getch) (Char.to-int \~)))
+      ;; Carp requires at least one form in a while form; since getch already
+      ;; prints characters to the screen, we just call unit (), which is a no-op
+      ())
+    (endwin))
+)
