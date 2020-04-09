@@ -16,6 +16,7 @@ typedef short Short;
 #if NCURSES_WIDECHAR
 #include <wchar.h>
 typedef wchar_t Wchar;
+typedef wint_t WideInt;
 typedef wchar_t* WideString;
 typedef cchar_t WideChar;
 

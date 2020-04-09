@@ -1,0 +1,13 @@
+;; ncurses get_wch functions (see curs_get_wch)
+(defmodule NCurses
+  (defmodule Wide
+    ;; WideString is an alias to wchar_t*, but it's meant to denote strings,
+    ;; whereas these functions read a single wide character; so, we use (Ptr
+    ;; Wchar) instead.
+    (register get-wch (Fn [(Ptr Wchar)] Int) "get_wch")
+    (register wget-wch (Fn [(Ptr WINDOW) (Ptr Wchar)] Int) "wget_wch")
+    (register mvget-wch (Fn [Int Int (Ptr Wchar)] Int) "mvget_wch")
+    (register mvwget-wch (Fn [(Ptr WINDOW) Int Int (Ptr Wchar)] Int) "mvwget_wch")
+    (register unget-wch (Fn [Wchar] Int) "unget_wch")
+  )
+)

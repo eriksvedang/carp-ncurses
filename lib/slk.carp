@@ -2,8 +2,6 @@
 (defmodule NCurses
   (register slk-init (Fn [Int] Int) "slk_init")
   (register slk-set (Fn [Int (Ptr Char) Int] Int) "slk_set")
-  ;; TODO: Move to Wide submodule.
-  (register slk-wset (Fn [Int (Ptr Wchar) Int] Int) "slk_wset")
   (register slk-label (Fn [Int] (Ptr Char)) "slk_label")
   (register slk-refresh (Fn [] Int) "slk_refresh")
   (register slk-noutrefresh (Fn [] Int) "slk_noutrefresh")
