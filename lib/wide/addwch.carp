@@ -1,0 +1,12 @@
+;; ncurses add_wch functions (see curs_add_wch)
+;; These functions require wide character support
+(defmodule NCurses
+  (defmodule Wide
+    (register addch (Fn [(Ptr WideChar)] Int) "add_wch")
+    (register waddch (Fn [(Ptr WINDOW) (Ptr WideChar)] Int) "wadd_wch")
+    (register mvaddch (Fn [Int Int (Ptr WideChar)] Int) "mvadd_wch")
+    (register mvwaddch (Fn [(Ptr WINDOW) Int Int (Ptr WideChar)] Int) "mvwadd_wch")
+    (register echo-char (Fn [(Ptr WideChar)] Int) "echo_wchar")
+    (register wecho-char (Fn [(Ptr WINDOW) (Ptr WideChar)] Int) "wecho_wchar")
+  )
+)

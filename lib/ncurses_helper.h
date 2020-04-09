@@ -12,10 +12,36 @@ typedef attr_t Attribute;
 // with Carp's compiler here.
 typedef chtype Chtype;
 typedef short Short;
-typedef wchar_t Wchar;
 
 #if NCURSES_WIDECHAR
-typedef cchar_t Cchar;
+#include <wchar.h>
+typedef wchar_t Wchar;
+typedef wchar_t* WideString;
+typedef cchar_t WideChar;
+
+WideChar NCurses_Wide_widechar(attr_t attrs, char* c) {
+  mbstate_t state = {0};
+  wchar_t wchar;
+  // Unicode characters are at most 4 bytes.
+  // Since we're only capturing a single wide character in this function, we
+  // only convert the first 4 bytes of the input string.
+  //
+  // We need to take a string as input since c chars are only a single byte. 
+  // An example input: "\u2665"
+  mbrtowc(&wchar, c, 4, &state);
+  WideChar wide = {attrs, wchar};
+  return wide;
+}
+
+WideString NCurses_Wide_widestring(const char* c) {
+  const char** p = &c;
+  mbstate_t state = {0};
+  size_t len = strlen(c);
+  wchar_t wchar[len];
+  mbsrtowcs(wchar, p, len, &state);
+  WideString wstring = wchar;
+  return wstring;
+}
 #endif
 
 Short NCurses_Short_from_MINUS_int(int x) {
