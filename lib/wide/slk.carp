@@ -1,0 +1,6 @@
+;; ncurses wide slk functions (see curs_slk)
+(defmodule NCurses
+  (defmodule Wide
+    (register slk-wset (Fn [Int WideString Int] Int) "slk_wset")
+  )
+)

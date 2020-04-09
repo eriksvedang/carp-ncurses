@@ -1,12 +1,11 @@
 (system-include "ncurses.h")
-(relative-include "ncurses_helper.h")
+(relative-include "lib/ncurses_helper.h")
 (add-lib "-lncurses")
 
 (register-type WINDOW)
 (register-type SCREEN)
 (register-type Chtype)
 ;; Just a synonym for chtype under the hood.
-(register-type Attribute)
 (register-type Short)
 (register-type MEVENT)
 (register-type Wchar)

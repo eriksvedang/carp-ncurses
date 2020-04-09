@@ -1,0 +1,14 @@
+;; ncurses in_wchstr functions (see curs_in_wchstr)
+(defmodule NCurses
+  (defmodule Wide
+    (register in-wchstr (Fn [(Ptr WideChar)] Int) "in_wchstr")
+    (register in-wchnstr (Fn [(Ptr WideChar) Int] Int) "in_wchnstr")
+    (register win-wchstr (Fn [(Ptr WINDOW) (Ptr WideChar)] Int) "win_wchstr")
+    (register win-wchnstr (Fn [(Ptr WINDOW) (Ptr WideChar) Int] Int) "win_wchnstr")
+    (register mvin-wchstr (Fn [Int Int (Ptr WideChar)] Int) "mvin_wchstr")
+    (register mvin-wchnstr (Fn [Int Int (Ptr WideChar) Int] Int) "mvin_wchnstr")
+    (register mvwin-wchstr (Fn [(Ptr WINDOW) Int Int (Ptr WideChar)] Int) "mvwin_wchstr")
+    (register mvwin-wchnstr (Fn [(Ptr WINDOW) Int Int (Ptr WideChar) Int] Int)
+    "mvwin_wchnstr")
+  )
+)

@@ -1,0 +1,35 @@
+(relative-include "lib/ncurses_wide_helper.h")
+(load "ncurses.carp")
+(load "lib/wide/locale/locale.carp")
+
+(register-type Wchar)
+(register-type WideChar)
+(register-type WideString)
+
+(load "lib/wide/addwch.carp")
+(load "lib/wide/addwchstr.carp")
+(load "lib/wide/addwstr.carp")
+(load "lib/wide/borderset.carp")
+(load "lib/wide/slk.carp")
+(load "lib/wide/getwch.carp")
+(load "lib/wide/getwstr.carp")
+(load "lib/wide/getcchar.carp")
+(load "lib/wide/inwch.carp")
+(load "lib/wide/inwchstr.carp")
+(load "lib/wide/inwstr.carp")
+(load "lib/wide/inswstr.carp")
+(load "lib/wide/inswch.carp")
+(load "lib/wide/pad.carp")
+
+(defmodule NCurses
+  (defmodule Wide
+    ;; TODO: It'd be great to have a more robust solution for this supporting
+    ;; widechar literals.
+    (register widechar (Fn [Attribute String] WideChar))
+    (register widestring (Fn [(Ptr Char)] WideString))
+
+    (defn initscr [] 
+      (do (enable-unicode @"en" @"US")
+          (NCurses.initscr)))
+  )
+)

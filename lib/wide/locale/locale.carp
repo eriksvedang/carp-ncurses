@@ -1,0 +1,44 @@
+;; locale functions
+;; the setlocale function must be called before using ncurses wide character
+;; routines.
+
+(system-include "locale.h")
+(relative-include "locale_helper.h")
+
+(defmodule NCurses
+  (defmodule Locale
+    ;; Opaque type representing locale categories defined in locale.h
+    (register-type Category)
+    
+    (register setlocale (Fn [Category (Ptr Char)] (Ptr Char)) "setlocale")
+    
+    ;; locale categories, see man locale
+    ;; The first argument to setlocale should be a category.
+    (register LC_ALL Category "LC_ALL")
+    (register LC_COLLATE Category "LC_COLLATE")
+    (register LC_CTYPE Category "LC_CTYPE")
+    (register LC_MONETARY Category "LC_MONETARY")
+    (register LC_NUMERIC Category "LC_NUMERIC")
+    (register LC_TIME Category "LC_TIME")
+    (register LC_MESSAGES Category "LC_MESSAGES")
+  )
+
+  (defmodule Wide
+    (doc set-locale 
+      "Wraps Locale.setlocale. Primarily a convenience function to call
+      setlocale from the Wide module directly; also converts a Carp String to a
+      character Pointer.")
+    (sig set-locale (Fn [Locale.Category (Ref String)] (Ptr Char)))
+    (defn set-locale [category encoding]
+      (Locale.setlocale category (String.cstr encoding)))
+  
+    (doc enable-unicode 
+      "Explicitly enables UTF-8 character coding given a language and territoy.
+      This function calls Locale.setlocale but ignores its result.")
+    (sig enable-unicode (Fn [String String] ()))
+    (defn enable-unicode [language territory]
+      (let [lstr (concat &[(String.join-with-char \_ &[language territory])
+      @".UTF-8"])]
+        (ignore (Locale.setlocale Locale.LC_CTYPE (cstr &lstr)))))
+  )
+)

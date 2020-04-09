@@ -1,0 +1,17 @@
+;; ncurses add_wchstr functions (see curs_add_wchstr)
+;; All of these functions expect *arrays* of WideChars.
+;; At the moment, the best way to convert an array of WideChars to a Ptr
+;; WideChar seems to be to call unsafe-raw--we should provide wrappers around
+;; this
+(defmodule NCurses
+  (defmodule Wide
+    (register add-chstr (Fn [(Ptr WideChar)] Int) "add_wchstr")
+    (register add-chnstr (Fn [(Ptr WideChar) Int] Int) "add_wchnstr")
+    (register wadd-chstr (Fn [(Ptr WINDOW) (Ptr WideChar)] Int) "wadd_wchstr")
+    (register wadd-chnstr (Fn [(Ptr WINDOW) (Ptr WideChar) Int] Int) "wadd_wchnstr")
+    (register mvadd-chstr (Fn [Int Int (Ptr WideChar)] Int) "mvadd_wchstr")
+    (register mvadd-chnstr (Fn [Int Int (Ptr WideChar) Int] Int) "mvadd_wchnstr")
+    (register mvwadd-chstr (Fn [(Ptr WINDOW) Int Int (Ptr WideChar)] Int) "mvwadd_wchstr")
+    (register mvwadd-chnstr (Fn [(Ptr WINDOW) Int Int (Ptr WideChar) Int] Int) "mvwadd_wchnstr")
+  )
+)

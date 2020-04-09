@@ -1,4 +1,4 @@
-(load "ncurses.carp")
+(load "../ncurses.carp")
 (use NCurses)
 
 (def x 10)

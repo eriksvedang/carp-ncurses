@@ -1,0 +1,6 @@
+;; ncurses pad wide functions (see curs_pad)
+(defmodule NCurses
+  (defmodule Wide
+    (register pecho-wchar (Fn [(Ptr WINDOW) (Ptr WideChar)] Int) "pecho_wchar")
+  )
+)

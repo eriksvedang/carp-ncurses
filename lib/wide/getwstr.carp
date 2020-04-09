@@ -1,0 +1,13 @@
+;; ncurses get_wstr functions (see curs_get_wstr)
+(defmodule NCurses
+  (defmodule Wide
+    (register get-wstr (Fn [(Ptr (Array WideInt))] Int) "get_wstr")
+    (register getn-wstr (Fn [(Ptr (Array WideInt)) Int] Int) "getn_wstr")
+    (register wget-wstr (Fn [(Ptr WINDOW) (Ptr (Array WideInt))] Int) "wget_wstr")
+    (register wgetn-wstr (Fn [(Ptr WINDOW) (Ptr (Array WideInt)) Int] Int) "wgetn_wstr")
+    (register mvget-wstr (Fn [Int Int (Ptr (Array WideInt))] Int) "mvget_wstr")
+    (register mvgetn-wstr (Fn [Int Int (Ptr (Array WideInt)) Int] Int) "mvgetn_wstr")
+    (register mvwget-wstr (Fn [(Ptr WINDOW) Int Int (Ptr (Array WideInt))] Int) "mvwget_wstr")
+    (register mvwgetn-wstr (Fn [(Ptr WINDOW) Int Int (Ptr (Array WideInt)) Int] Int) "mvwgetn_wstr")
+  )
+)
