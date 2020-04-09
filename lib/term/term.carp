@@ -1,0 +1,6 @@
+(system-include "term.h")
+
+(register-type TERMINAL)
+
+(load "terminfo.carp")
+(load "termcap.carp")

@@ -1,0 +1,16 @@
+;; ncurses termcap functions (see curs_termcap)
+(defmodule NCurses
+  (defmodule Term
+    (register PC Char "PC")
+    (register UP (Ptr Char) "UP")
+    (register BC (Ptr Char) "BC")
+    (register ospeed Short "ospeed")
+
+    (register tgetent (Fn [(Ptr Char) (Ptr Char)] Int) "tgetent")
+    (register tgetflag (Fn [(Ptr Char)] Int) "tgetflag")
+    (register tgetnum (Fn [(Ptr Char)] Int) "tgetnum")
+    (register tgetstr (Fn [(Ptr Char) (Ptr (Ptr Char))] (Ptr Char)) "tgetstr")
+    (register tgoto (Fn [(Ptr Char) Int Int] (Ptr Char)) "tgoto")
+    (register tputs (Fn [(Ptr Char) Int (Ptr (Fn [Int] Int))] Int) "tputs")
+  )
+)
