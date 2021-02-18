@@ -26,9 +26,9 @@
     ;; TODO: It'd be great to have a more robust solution for this supporting
     ;; widechar literals.
     (register widechar (Fn [Attribute String] WideChar))
-    (register widestring (Fn [(Ptr Char)] WideString))
+    (register widestring (Fn [(Ptr CChar)] WideString))
 
-    (defn initscr [] 
+    (defn initscr []
       (do (enable-unicode @"en" @"US")
           (NCurses.initscr)))
   )
