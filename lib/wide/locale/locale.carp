@@ -10,7 +10,7 @@
     ;; Opaque type representing locale categories defined in locale.h
     (register-type Category)
     
-    (register setlocale (Fn [Category (Ptr Char)] (Ptr Char)) "setlocale")
+    (register setlocale (Fn [Category (Ptr CChar)] (Ptr CChar)) "setlocale")
     
     ;; locale categories, see man locale
     ;; The first argument to setlocale should be a category.
@@ -28,7 +28,7 @@
       "Wraps Locale.setlocale. Primarily a convenience function to call
       setlocale from the Wide module directly; also converts a Carp String to a
       character Pointer.")
-    (sig set-locale (Fn [Locale.Category (Ref String)] (Ptr Char)))
+    (sig set-locale (Fn [Category (Ref String)] (Ptr CChar)))
     (defn set-locale [category encoding]
       (Locale.setlocale category (String.cstr encoding)))
   
