@@ -30,7 +30,7 @@ WideChar NCurses_Wide_widechar(attr_t attrs, char* c) {
   // We need to take a string as input since c chars are only a single byte. 
   // An example input: "\u2665"
   mbrtowc(&wchar, c, 4, &state);
-  WideChar wide = {attrs, wchar};
+  WideChar wide = {attrs, {wchar}};
   return wide;
 }
 
@@ -64,7 +64,7 @@ Chtype NCurses_Chtype_from_MINUS_int(int x) {
 }
 
 Attribute *NCurses_attr_ptr() {
-  Attribute* attributes;
+  Attribute* attributes = NULL;
   return attributes;
 }
 
