@@ -1,0 +1,22 @@
+;; Example derived from Dan Gookin's *Guide to NCurses Programming*
+
+(load "../ncurses.carp")
+(use NCurses)
+
+(defn main []
+  (let-do [first-name (String.allocate 23 \ )
+           last-name (String.allocate 32 \ )]
+    (ignore (initscr))
+    (ignore (addstr @"What is your first name? "))
+    (ignore (refresh))
+    (ignore (getnstr (String.cstr &first-name) 23))
+    (ignore (addstr @"What is your last name? "))
+    (ignore (refresh))
+    (ignore (getnstr (String.cstr &last-name) 32))
+    (ignore (addstr first-name))
+    (ignore (addch (Chtype.from-int (Char.to-int \ ))))
+    (ignore (addstr last-name))
+    (ignore (refresh))
+    (ignore (getch))
+    (endwin))
+)

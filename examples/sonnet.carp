@@ -1,0 +1,17 @@
+;; Sonnet example, derived from Dan Gookin's guide to NCurses
+
+(load "../ncurses.carp")
+(use NCurses)
+
+(defn main []
+  (let-do [line-one "Shall I compare thee "
+           line-two "to a summer's day?"
+           line-three "Thou art more lovely"]
+    (ignore (initscr))
+    (ignore (addstr @line-one))
+    (ignore (addstr @line-two))
+    (ignore (move 2 0))
+    (ignore (addstr @line-three))
+    (ignore (refresh))
+    (ignore (getch))
+    (endwin)))
