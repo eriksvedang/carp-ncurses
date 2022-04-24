@@ -1,6 +1,7 @@
 (system-include "ncurses.h")
 (relative-include "lib/ncurses_helper.h")
 (add-lib "-lncurses")
+(add-lib "-ltinfo")
 
 (register-type WINDOW)
 (register-type SCREEN)
